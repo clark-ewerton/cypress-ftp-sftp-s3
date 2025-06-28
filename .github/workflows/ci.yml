@@ -1,0 +1,40 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        run: npm run test
+        env:
+          # Public credentials - safe to hardcode
+          FTP_HOST: ftp.dlptest.com
+          FTP_USER: dlpuser
+          FTP_PASSWORD: rNrKYTX9g7z3RgJRmxWuGHbeu
+          SFTP_HOST: demo.wftpserver.com
+          SFTP_PORT: 2222
+          SFTP_USER: demo
+          SFTP_PASSWORD: demo
+
+          # AWS credentials must be kept as secrets for security
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}

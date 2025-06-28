@@ -1,0 +1,23 @@
+{
+  "name": "cypress-ftp-sftp-s3",
+  "version": "1.0.0",
+  "description": "Cypress automation tests for FTP, SFTP, and S3 operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "open": "cypress open"
+  },
+  "dependencies": {
+    "cypress": "^13.5.0",
+    "ftp": "^0.3.10",
+    "ssh2": "^1.1.0",
+    "aws-sdk": "^2.1522.0",
+    "dotenv": "^16.3.1",
+    "cypress-file-upload": "^5.0.8"
+  },
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.17.1",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1"
+  }
+}
