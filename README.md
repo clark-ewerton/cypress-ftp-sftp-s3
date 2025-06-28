@@ -1,5 +1,11 @@
 # Cypress FTP/SFTP/S3 Automation
 
+[![Cypress Tests](https://github.com/clark-ewerton/cypress-ftp-sftp-s3/actions/workflows/ci.yml/badge.svg)](https://github.com/clark-ewerton/cypress-ftp-sftp-s3/actions/workflows/ci.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Online-green)](https://clark-ewerton.github.io/cypress-ftp-sftp-s3/)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
+⭐ Don't forget to give this project a star! ⭐
+
 This project provides automation tests for FTP, SFTP, and S3 operations using Cypress.
 
 ## Features
