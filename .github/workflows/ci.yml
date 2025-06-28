@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  cypress-run:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,3 +38,52 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
+
+      - name: Upload Allure results
+        uses: actions/upload-artifact@v4
+        if: always() # Always run this step to upload results even if tests fail
+        with:
+          name: allure-results
+          path: target/allure-results
+
+  deploy-report:
+    name: Generate and Deploy Allure Report
+    if: always()
+    needs: [run-tests]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      statuses: write
+
+    steps:
+    - name: Download Allure results
+      uses: actions/download-artifact@v4
+      with:
+        name: allure-results
+        path: target/allure-results
+
+    - name: Generate Allure Report
+      uses: simple-elf/allure-report-action@v1.7
+      id: allure-report
+      with:
+        allure_results: target/allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
+        keep_reports: 10
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: allure-history
+        publish_branch: gh-pages
+
+    - name: Post report link as status
+      uses: Sibz/github-status-action@v1
+      with:
+        authToken: ${{ secrets.GITHUB_TOKEN }}
+        context: 'Allure Report'
+        state: success
+        sha: ${{ github.event.pull_request.head.sha || github.sha }}
+        target_url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.run_number }}/

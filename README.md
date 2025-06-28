@@ -82,6 +82,12 @@ The required secrets are:
 - `AWS_REGION`
 - `S3_BUCKET`
 
+## Allure Reports
+
+This project uses Allure to generate detailed and interactive test reports.
+
+After each run in the GitHub Actions pipeline, a report is automatically generated and deployed to GitHub Pages. You can view the latest report by navigating to the **Environments** section on the main page of the repository and clicking on **github-pages**.
+
 ## Test Files
 
 - `ftp.cy.js`: FTP operations tests

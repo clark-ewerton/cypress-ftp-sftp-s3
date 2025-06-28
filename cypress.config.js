@@ -1,6 +1,11 @@
-const { defineConfig } = require('cypress')
+const { defineConfig } = require('cypress');
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
+  env: {
+    allure: true,
+    allureResultsPath: 'target/allure-results',
+  },
   e2e: {
     retries: {
       runMode: 2, // Will retry up to 2 times when running via `cypress run`
@@ -21,6 +26,8 @@ module.exports = defineConfig({
       const fs = require('fs');
       const path = require('path');
       const AWS = require('aws-sdk');
+
+      allureWriter(on, config);
 
       on('task', {
         ftpConnect() {

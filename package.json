@@ -8,15 +8,17 @@
     "open": "cypress open"
   },
   "dependencies": {
-    "cypress": "^13.5.0",
-    "ftp": "^0.3.10",
-    "ssh2": "^1.1.0",
     "aws-sdk": "^2.1522.0",
+    "cypress": "^13.5.0",
+    "cypress-file-upload": "^5.0.8",
     "dotenv": "^16.3.1",
-    "cypress-file-upload": "^5.0.8"
+    "ftp": "^0.3.10",
+    "ssh2": "^1.1.0"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^5.17.1",
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "allure-commandline": "^2.34.1",
     "eslint": "^8.56.0",
     "prettier": "^3.1.1"
   }
