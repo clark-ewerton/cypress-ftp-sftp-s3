@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Jun 28 22:55:35 GMT 2025","Sat Jun 28 22:55:35 GMT 2025","582","","S3 End-to-End Test","","","","should upload, download, verify, and delete an object from S3",""
+"passed","Sat Jun 28 22:55:31 GMT 2025","Sat Jun 28 22:55:33 GMT 2025","1697","","FTP End-to-End Test","","","","should upload, download, verify, and delete a file from the FTP server",""
+"passed","Sat Jun 28 22:55:37 GMT 2025","Sat Jun 28 22:55:39 GMT 2025","2452","","SFTP File Operations","","","","should upload a file, download a separate file, and delete the uploaded file",""
